@@ -8,20 +8,56 @@ import (
 )
 
 func main() {
-	sl := []int{1, 2, 3, 55, 3, 222}
+	// sl := []int{1, 2, 3, 55, 3, 222}
 	// question 1
-	t := maxNumb(sl)
-	fmt.Println("question 1: ", t)
+	// t := maxNumb(sl)
+	// fmt.Println("question 1: ", t)
 	//question2
-	strtest := "15"
-	o := uncompress(strtest)
-	fmt.Println("question 2: ", o)
+	// strtest := "1k5q"
+	// o := uncompress(strtest)
+	// fmt.Println("question 2: ", o)
+	//question3
+	str := "aaabbcc"
+	compressed := compress(str)
+	fmt.Println("question 3: ", compressed)
 
 	// practice
 	// slic := sl[1:4]
 
 	// fmt.Println("practie: ", slic)
 
+}
+
+/*
+Write a function, compress, that takes in a string as an argument. The function should return a compressed version of the string where consecutive occurrences of the same characters are compressed into the number of occurrences followed by the character. Single character occurrences should not be changed.
+
+'aaa' compresses to '3a'
+'cc' compresses to '2c'
+'t' should remain as 't'
+
+You can assume that the input only contains alphabetic characters.
+*/
+
+func compress(s string) string {
+	result := ""
+	i := 0
+	j := 0
+
+	for j < len(s) {
+		if s[i] == s[j] {
+			j += 1
+		} else {
+			count := j - i
+			if count > 1 {
+				result += strconv.Itoa(count) + string(s[i])
+			} else {
+				result += string(s[i])
+			}
+			i = j
+		}
+	}
+
+	return result
 }
 
 /*
