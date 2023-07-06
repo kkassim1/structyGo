@@ -9,14 +9,12 @@ type storypage struct {
 	next *storypage
 }
 
-func playstory(p *storypage) {
+func (p *storypage) playstory() {
 
-	if p == nil {
-		return
+	for p != nil {
+		fmt.Println(p.c)
+		p = p.next
 	}
-
-	fmt.Println(p.c)
-	playstory(p.next)
 }
 
 func main() {
@@ -28,6 +26,6 @@ func main() {
 	f.next = &e
 	e.next = &t
 
-	playstory(&f)
+	f.playstory()
 
 }
