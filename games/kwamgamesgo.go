@@ -5,26 +5,32 @@ import "fmt"
 // todo insert and delete page
 
 type storypage struct {
-	c    string
+	text string
 	next *storypage
 }
 
 func (p *storypage) playstory() {
 
 	for p != nil {
-		fmt.Println(p.c)
+		fmt.Println(p.text)
 		p = p.next
 	}
 }
 
+func (p *storypage) addtoend(textToBeAddedToPage string) {
+
+	for p.next != nil {
+		p = p.next
+	}
+	p.next = &storypage{textToBeAddedToPage, nil}
+
+}
+
 func main() {
 
-	f := storypage{"yoyo", nil}
-	e := storypage{"e11", nil}
-	t := storypage{"t1", nil}
-
-	f.next = &e
-	e.next = &t
+	f := storypage{"page 1", nil}
+	f.addtoend("page 2")
+	f.addtoend("page 3")
 
 	f.playstory()
 
