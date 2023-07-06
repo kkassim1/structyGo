@@ -17,7 +17,7 @@ func main() {
 	// o := uncompress(strtest)
 	// fmt.Println("question 2: ", o)
 	//question3
-	str := "aaabbcc"
+	str := "aaabbccp"
 	compressed := compress(str)
 	fmt.Println("question 3: ", compressed)
 
