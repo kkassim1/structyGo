@@ -96,4 +96,6 @@ func main() {
 		panic("failed to compile fragments shader : \n" + log)
 	}
 
+	// uint 32 shaderprogra
+
 }
