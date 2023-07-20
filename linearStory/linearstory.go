@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"os"
+)
 
 type storyPage struct {
 	text   string
@@ -26,8 +30,10 @@ func (p *storyPage) addPage(text string) {
 }
 
 func main() {
+	scanner := bufio.NewScanner(os.Stdin)
 	p1 := storyPage{"page1", nil}
-	p1.addPage("page2")
+	scanner.Scan()
+	p1.addPage(scanner.Text())
 	p1.addPage("page3")
 
 	p1.playStory()
