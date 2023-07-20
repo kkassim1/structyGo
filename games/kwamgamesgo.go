@@ -238,18 +238,18 @@ type gameObject struct {
 func run() error {
 	rand.Seed(time.Now().UnixNano())
 
-	if err := sdl.Init(sdl.INIT_EVERYTHING); err != nil {
+	if err := sdl.Init(0x00000020); err != nil {
 		return fmt.Errorf("failed to initialize SDL: %v", err)
 	}
 	defer sdl.Quit()
 
-	window, err := sdl.CreateWindow("SDL Window", sdl.WINDOWPOS_UNDEFINED, sdl.WINDOWPOS_UNDEFINED, windowWidth, windowHeight, sdl.WINDOW_SHOWN)
+	window, err := sdl.CreateWindow("SDL Window", -1, -1, 800, 600, 0x00000004)
 	if err != nil {
 		return fmt.Errorf("failed to create window: %v", err)
 	}
 	defer window.Destroy()
 
-	renderer, err := sdl.CreateRenderer(window, -1, sdl.RENDERER_ACCELERATED)
+	renderer, err := sdl.CreateRenderer(window, -1, 0x00000002)
 	if err != nil {
 		return fmt.Errorf("failed to create renderer: %v", err)
 	}
