@@ -7,12 +7,12 @@ type storyPage struct {
 	nextpg *storyPage
 }
 
-func playStort(page *storyPage) {
-	if page == nil {
-		return
+func (s *storyPage) playStort() {
+	for s != nil {
+		fmt.Println(s.text)
+		s = s.nextpg
 	}
-	fmt.Println(page.text)
-	playStort(page.nextpg)
+
 }
 
 func addPage(story *storyPage, text string) {
@@ -34,6 +34,6 @@ func main() {
 	p2.nextpg = &p3
 
 	addPage(&p3, "page4")
-	playStort(&p1)
+	p1.playStort()
 
 }
